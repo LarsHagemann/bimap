@@ -15,6 +15,7 @@ Example:
 
 ```C++
 #include <bimap.hpp>
+#include <memory>
 class IdConverter
 {
 private:
@@ -30,6 +31,15 @@ public:
 	    if (m_id_map.has_value(static_cast<uint32_t>(ptr))) return 0;
 		auto id = generate_id();
 	}
+	void remove_by_ud(uint32_t uid)
+	{
+		m_id_map.erase_key(uid);
+	}
+	template<class _Type>
+	void remove_by_ptr(_Type* ptr)
+	{
+		m_id_map.erase_value(static_cast<uint32_t>(ptr));
+	}
 	// Id Generator
 	uint32_t generate_id()
 	{
@@ -37,6 +47,21 @@ public:
 		auto id = random_generate();
 		while(m_id_map.has_key(id)) id = random_generate();
 		return id;
+	}
+	void update_all()
+	{
+		// Assuming GuiObjectPtr is the base class of all elements in the IdConverter table
+		for(auto& obj : m_id_map)
+			static_cast<GuiObjectPtr>(obj.second)->update();
+	}
+	// You could also create a to_shared function that returns a smart pointer to the object
+	// Remember to always keep one shared pointer so that your object isn't being destroyed by the 
+	// shared pointer implementation accidently or remove the object from the converter in the
+	// Base classes destructor.
+	template<class _Type>
+	std::shared<_Type> to_shared(uint32_t uid)
+	{
+		return std::make_shared<_Type>(static_cast<_Type*>(m_id_map.get_value(uid)));
 	}
 };
 
@@ -46,6 +71,7 @@ int main()
 {
 	IdConverter converter;
 	// ...
+	
 }
 
 ```
