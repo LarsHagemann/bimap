@@ -44,7 +44,7 @@ namespace stde
 		/* Iterator functions */
 		auto begin()	const	{ return m_tree.cbegin();	}
 		auto begin()			{ return m_tree.begin();	}
-		auto end  ()	const	{ return m_tree.cbegin();	}
+		auto end  ()	const	{ return m_tree.cend();		}
 		auto end  ()			{ return m_tree.end();		}
 	public:
 		/* Modification functions */
