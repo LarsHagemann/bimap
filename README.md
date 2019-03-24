@@ -85,6 +85,10 @@ int main()
 
 ```
 
+More examples:
+ * [bimap_basic](/blob/master/examples/bimap_basic.hpp)
+ * [bimap_gui](/blob/master/examples/bimap_gui.hpp)
+
 Issues: 
  * Double memory usage. Could be minimized by using pointers for either map value.
 	
