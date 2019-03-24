@@ -3,7 +3,7 @@ std-extension is an extension of the standard template library that comes with C
 Its main features are:
  * bimap
  
-# bimap
+### bimap
 
 std::bimap<_KeyType, _ValueType> implements a interface that behaves similar to a map where you can make reverse lookups.
 A bidirectional map contains pairs with 1 to 1 relations. Every key has only one value and every value corresponds to exactly one key.
