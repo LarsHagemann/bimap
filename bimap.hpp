@@ -52,10 +52,10 @@ namespace stde
 		_RTree m_rtree;
 	public:
 		/* Iterator functions */
-		auto begin()	const { return m_tree.cbegin(); }
-		auto begin() { return m_tree.begin(); }
-		auto end()	const { return m_tree.cbegin(); }
-		auto end() { return m_tree.end(); }
+		auto begin()	const 	{ return m_tree.cbegin(); }
+		auto begin() 			{ return m_tree.begin(); }
+		auto end  ()	const 	{ return m_tree.cbegin(); }
+		auto end  () 			{ return m_tree.end(); }
 	public:
 		/* Modification functions */
 		void insert(_Tree_Node&& node)
