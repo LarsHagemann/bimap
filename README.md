@@ -18,7 +18,7 @@ class IdConverter
 private:
     std::bimap<uint32_t, uint32_t> m_id_map;
 public:
-    template<class _Type>
+	template<class _Type>
 	_Type* by_id(uint32_t uid) { return static_cast<_Type*>(m_id_map.get_value(uid)); }
 	template<class _Type>
 	uint32_t by_ptr(_Type* ptr) { return m_id_map.get_key(static_cast<uint32_t>(ptr)); }
