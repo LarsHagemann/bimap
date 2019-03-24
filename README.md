@@ -5,7 +5,7 @@ Its main features are:
  
 ### bimap
 
-std::bimap<_KeyType, _ValueType> implements a interface that behaves similar to a map where you can make reverse lookups.
+stde::bimap<_KeyType, _ValueType> implements a interface that behaves similar to a map where you can make reverse lookups.
 A bidirectional map contains pairs with 1 to 1 relations. Every key has only one value and every value corresponds to exactly one key.
 It could be used to store Ids and pointer addresses. Thus you can lookup the Id by the pointer but also the pointer by Id.
 
@@ -19,11 +19,16 @@ Example:
 /*
 * The IdConverter class implements some ideas on how to use the bimap and when it is useful
 * It does not want to show the best way to implement something.
+*
+* bimap.hpp also implements a using declarative that makes it easy to use a unordered_bimap.
+* It's the same as the normal bimap but using std::unordered_map to store its state.
+* In some situations you would want to use stde::bimap and in some you want to
+* use stde::unordered_bimap.
 */
 class IdConverter
 {
 private:
-	std::bimap<uint32_t, uint32_t> m_id_map;
+	stde::bimap<uint32_t, uint32_t> m_id_map;
 public:
 	template<class _Type>
 	_Type* by_id(uint32_t uid) { return static_cast<_Type*>(m_id_map.get_value(uid)); }
