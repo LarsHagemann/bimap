@@ -22,7 +22,7 @@ namespace stde
 		class _ValueType,
 		class _Container_Type = std::map<_KeyType, _ValueType>,
 		class _Reverse_Container_Type = std::map<_ValueType, _KeyType>>
-		class bimap
+	class bimap
 	{
 	public:
 		using key_type = _KeyType;
