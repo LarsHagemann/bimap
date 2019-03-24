@@ -9,7 +9,7 @@ This file is part of the std-extension collection written by Lars Hagemann.
 You may use it in any way you want to.
 */
 
-namespace std
+namespace stde
 {
 	/*
 	* bimap is a map where the key and the value is unique, thus one can
