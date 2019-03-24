@@ -9,6 +9,8 @@ std::bimap<_KeyType, _ValueType> implements a interface that behaves similar to 
 A bidirectional map contains pairs with 1 to 1 relations. Every key has only one value and every value corresponds to exactly one key.
 It could be used to store Ids and pointer addresses. Thus you can lookup the Id by the pointer but also the pointer by Id.
 
+std-extensions bimap can be used as a header only implementation. The only thing you need is the std library and C++.
+
 Example:
 
 ```C++
