@@ -16,6 +16,10 @@ Example:
 ```C++
 #include <bimap.hpp>
 #include <memory>
+/*
+* The IdConverter class implements some ideas on how to use the bimap and when it is useful
+* It does not want to show the best way to implement something.
+*/
 class IdConverter
 {
 private:
@@ -31,7 +35,7 @@ public:
 	    if (m_id_map.has_value(static_cast<uint32_t>(ptr))) return 0;
 		auto id = generate_id();
 	}
-	void remove_by_ud(uint32_t uid)
+	void remove_by_id(uint32_t uid)
 	{
 		m_id_map.erase_key(uid);
 	}
