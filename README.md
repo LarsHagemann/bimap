@@ -47,3 +47,7 @@ int main()
 }
 
 ```
+
+Issues: 
+	* Double memory usage. Could be minimized by using pointers for either map value.
+	
