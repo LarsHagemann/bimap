@@ -111,7 +111,7 @@ namespace stde
 	template<
 		class _KeyType,
 		class _ValueType>
-		using unordered_bimap = bimap<
+	using unordered_bimap = bimap<
 		_KeyType,
 		_ValueType,
 		std::unordered_map<_KeyType, _ValueType>,
