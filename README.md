@@ -1,7 +1,7 @@
 ## std-extension
 std-extension is an extension of the standard template library that comes with C++.
 Its main features are:
- * bimap
+ * [bimap](#bimap)
  
 ### bimap
 
