@@ -53,23 +53,25 @@ namespace stde
 		_RTree m_value_tree;
 	private:
 		/* Inner helper functions */
-		inline size_t index_of_key(const key_type& key)
+		inline size_t index_of_key(const key_type& key) const
 		{
 			const auto k_itr = m_key_tree.find(key);
-			return std::distance(m_key_tree.begin(), k_itr);
+			const auto offset = static_cast<unsigned>(std::distance(m_key_tree.begin(), k_itr));
+			return (offset < m_key_tree.size() ? offset : 0);
 		}
-		inline size_t index_of_value(const value_type& value)
+		inline size_t index_of_value(const value_type& value) const
 		{
-			const auto k_itr = m_value_tree.find(value);
-			return std::distance(m_value_tree.begin(), k_itr);
+			const auto v_itr = m_value_tree.find(value);
+			const auto offset = static_cast<unsigned>(std::distance(m_value_tree.begin(), v_itr));
+			return (offset < m_value_tree.size() ? offset : 0);
 		}
-		inline value_type value_at_index(size_t index)
+		inline value_type value_at_index(size_t index) const
 		{
 			auto v_itr = m_value_tree.begin();
 			std::advance(v_itr, index);
 			return *v_itr;
 		}
-		inline key_type key_at_index(size_t index)
+		inline key_type key_at_index(size_t index) const
 		{
 			auto k_itr = m_key_tree.begin();
 			std::advance(k_itr, index);
@@ -124,16 +126,16 @@ namespace stde
 		{
 			return m_value_tree.find(value) != m_value_tree.end();
 		}
-		const value_type& get_value(const key_type& key) const
+		value_type get_value(const key_type& key) const
 		{
-			auto offset = index_of_key(key);
+			const auto offset = index_of_key(key);
 			auto v_itr = m_value_tree.begin();
 			std::advance(v_itr, offset);
 			return *v_itr;
 		}
-		const key_type& get_key(const value_type& value) const
+		key_type get_key(const value_type& value) const
 		{
-			auto offset = index_of_value(value);
+			const auto offset = index_of_value(value);
 			auto k_itr = m_key_tree.begin();
 			std::advance(k_itr, offset);
 			return *k_itr;
