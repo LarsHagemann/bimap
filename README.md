@@ -89,9 +89,6 @@ int main()
 More examples:
  * [bimap_basic](/examples/bimap_basic.hpp)
  * [bimap_gui](/examples/bimap_gui.hpp)
-
-Issues: 
- * Neither as performant nor as memory efficient as a std map or set, but it is the best method I could think of.
  
 Performance tests:
 
