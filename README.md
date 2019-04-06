@@ -14,8 +14,6 @@ std-extensions bimap can be used as a header only implementation. The only thing
 Example:
 
 ```C++
-#include <bimap.hpp>
-#include <memory>
 /*
 * The IdConverter class implements some ideas on how to use the bimap and when it is useful
 * It does not want to show the best way to implement something.
@@ -25,6 +23,9 @@ Example:
 * In some situations you would want to use stde::bimap and in some you want to
 * use stde::unordered_bimap.
 */
+#include <bimap.hpp>
+#include <memory>
+
 class IdConverter
 {
 private:
@@ -37,7 +38,7 @@ public:
 	template<class _Type>
 	uint32_t insert(_Type* ptr)
 	{
-	    if (m_id_map.has_value(static_cast<uint32_t>(ptr))) return 0;
+		if (m_id_map.has_value(static_cast<uint32_t>(ptr))) return 0;
 		auto id = generate_id();
 	}
 	void remove_by_id(uint32_t uid)
@@ -54,13 +55,13 @@ public:
 	{
 		// suppose random_generate() is a function that creates random numbers
 		auto id = random_generate();
-		while(m_id_map.has_key(id)) id = random_generate();
+		while (m_id_map.has_key(id)) id = random_generate();
 		return id;
 	}
 	void update_all()
 	{
 		// Assuming GuiObjectPtr is the base class of all elements in the IdConverter table
-		for(auto& obj : m_id_map)
+		for (auto& obj : m_id_map)
 			static_cast<GuiObjectPtr>(obj.second)->update();
 	}
 	// You could also create a to_shared function that returns a smart pointer to the object
@@ -68,7 +69,7 @@ public:
 	// shared pointer implementation accidently or remove the object from the converter in the
 	// Base classes destructor.
 	template<class _Type>
-	std::shared<_Type> to_shared(uint32_t uid)
+	std::shared_ptr<_Type> to_shared(uint32_t uid)
 	{
 		return std::make_shared<_Type>(static_cast<_Type*>(m_id_map.get_value(uid)));
 	}
@@ -80,7 +81,7 @@ int main()
 {
 	IdConverter converter;
 	// ...
-	
+
 }
 
 ```
