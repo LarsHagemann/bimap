@@ -91,5 +91,32 @@ More examples:
  * [bimap_gui](/examples/bimap_gui.hpp)
 
 Issues: 
- * Double memory usage. Could be minimized by using pointers for either map value.
-	
+ * Neither as performant nor as memory efficient as a std map or set, but it is the best method I could think of.
+ 
+Performance tests:
+
+```
+Testing std::map<unsigned int, unsigned int> with 100000 elements.
+        Initialization took: 1283127837 nanoseconds             1 seconds
+        Access took        : 26110671 nanoseconds               0 seconds
+        find took          : 765988895 nanoseconds              0 seconds
+        erase took         : 683217572 nanoseconds              0 seconds
+
+Testing std::map<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >, class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >> with 100000 elements.
+        Initialization took: 7193567389 nanoseconds             7 seconds
+        Access took        : 26496017 nanoseconds               0 seconds
+        find took          : 3899122728 nanoseconds             3 seconds
+        erase took         : 1055643928 nanoseconds             1 seconds
+
+Testing stde::bimap<unsigned int, unsigned int> with 100000 elements.
+        Initialization took: 2101563891 nanoseconds             2 seconds
+        Access took        : 59079720 nanoseconds               0 seconds
+        find took          : 821610188 nanoseconds              0 seconds
+        erase took         : 2721119610 nanoseconds             2 seconds
+
+Testing stde::bimap<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >, class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >> with 100000 elements.
+        Initialization took: 12045763399 nanoseconds            12 seconds
+        Access took        : 60478559 nanoseconds               0 seconds
+        find took          : 3892301806 nanoseconds             3 seconds
+        erase took         : 3719605167 nanoseconds             3 seconds
+```
