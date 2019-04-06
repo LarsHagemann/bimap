@@ -20,17 +20,17 @@ int main()
 
 	for (const auto& elem : my_map)
 		printf_s(
-			"%lld => %p\n", 
-			elem.first, 
-			reinterpret_cast<void*>(elem.second));
+			"%lld => %p\n",
+			*elem.first,
+			reinterpret_cast<void*>(*elem.second));
 
 	printf_s("\n");
 
 	for (const auto& elem : my_map)
 		printf_s(
-			"%lld => '%s'\n", 
-			elem.first, 
-			(*reinterpret_cast<std::string*>(elem.second)).data());
+			"%lld => '%s'\n",
+			*elem.first,
+			(*reinterpret_cast<std::string*>(*elem.second)).data());
 
 	printf_s("\n");
 
@@ -40,11 +40,11 @@ int main()
 	for (const auto& elem : my_map)
 		printf_s(
 			"%lld => '%s'\n",
-			elem.first,
-			(*reinterpret_cast<std::string*>(elem.second)).data());
+			*elem.first,
+			(*reinterpret_cast<std::string*>(*elem.second)).data());
 
 	for (auto elem : my_map)
-		delete reinterpret_cast<std::string*>(elem.second);
+		delete reinterpret_cast<std::string*>(*elem.second);
 
 	return 0;
 }

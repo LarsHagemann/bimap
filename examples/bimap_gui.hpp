@@ -1,4 +1,4 @@
-#include "bimap.hpp"
+#include <bimap.hpp>
 #include <random>
 #include <memory>
 
@@ -12,7 +12,7 @@ private:
 	uuid m_id;
 public:
 	typedef std::shared_ptr<GuiObject> Ptr;
-	GuiObject() : x(0.0f), y(0.0f), w(0.0f), h(0.0f), m_id(0) {}
+	GuiObject() : m_id(0), x(0.0f), y(0.0f), w(0.0f), h(0.0f) {}
 	// position x and y
 	float x, y;
 	// size width(w) and height(h)
@@ -20,10 +20,10 @@ public:
 	virtual void foo() = 0;
 };
 
-class GuiButton  : public GuiObject { public: void foo() override {printf_s("Button\n");} };
-class GuiTextBox : public GuiObject { public: void foo() override {printf_s("Textbox\n");} };
-class GuiEditBox : public GuiObject { public: void foo() override {printf_s("Editbox\n");} };
-class GuiPanel   : public GuiObject { public: void foo() override {printf_s("Panel\n");} };
+class GuiButton : public GuiObject { public: void foo() override { printf_s("Button\n"); } };
+class GuiTextBox : public GuiObject { public: void foo() override { printf_s("Textbox\n"); } };
+class GuiEditBox : public GuiObject { public: void foo() override { printf_s("Editbox\n"); } };
+class GuiPanel : public GuiObject { public: void foo() override { printf_s("Panel\n"); } };
 
 std::shared_ptr<GuiButton> make_button()
 {
@@ -66,9 +66,9 @@ public:
 	void update_all()
 	{
 		for (auto& elem : m_data)
-			elem.second->foo();
+			(*elem.second)->foo();
 	}
-	uuid get_id(const GuiObject::Ptr& ptr)
+	uuid get_id(const GuiObject::Ptr& ptr) const
 	{
 		return m_data.get_key(ptr);
 	}
@@ -83,22 +83,22 @@ public:
 
 int main()
 {
-	auto btn1 = make_button ();
-	auto btn2 = make_button ();
-	auto btn3 = make_button ();
-	auto txt1 = make_textbox();
-	auto txt2 = make_textbox();
-	auto txt3 = make_textbox();
-	auto edt1 = make_editbox();
-	auto edt2 = make_editbox();
-	auto edt3 = make_editbox();
-	auto pnl1 = make_panel  ();
-	auto pnl2 = make_panel  ();
-	auto pnl3 = make_panel  ();
+	const auto btn1 = make_button();
+	const auto btn2 = make_button();
+	const auto btn3 = make_button();
+	const auto txt1 = make_textbox();
+	const auto txt2 = make_textbox();
+	const auto txt3 = make_textbox();
+	const auto edt1 = make_editbox();
+	const auto edt2 = make_editbox();
+	const auto edt3 = make_editbox();
+	const auto pnl1 = make_panel();
+	const auto pnl2 = make_panel();
+	const auto pnl3 = make_panel();
 	GuiManager manager;
-	auto ubtn1 = manager.add_object(btn1);
-	auto ubtn2 = manager.add_object(btn2);
-	auto ubtn3 = manager.add_object(btn3);
+	const auto ubtn1 = manager.add_object(btn1);
+	const auto ubtn2 = manager.add_object(btn2);
+	const auto ubtn3 = manager.add_object(btn3);
 	// uuid of txt1 is lost for some reason
 	manager.add_object(txt1);
 	// but we can regain it with
