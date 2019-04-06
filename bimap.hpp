@@ -78,6 +78,14 @@ namespace stde
 			return *k_itr;
 		}
 	public:
+		/* Constructors */
+		bimap() { }
+		bimap(std::initializer_list<_Tree_Node> init)
+		{
+			for (const auto& elem : init)
+				insert(elem);
+		}
+	public:
 		/* Iterator functions */
 		const_iterator	begin()	const { return const_iterator({ m_key_tree.begin(), m_value_tree.begin() }); }
 		const_iterator	end()	const { return const_iterator({ m_key_tree.end()  , m_value_tree.end()   }); }
