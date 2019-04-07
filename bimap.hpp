@@ -150,8 +150,6 @@ namespace stde
 		}
 		size_t size() const
 		{
-			if (m_key_tree.size() != m_value_tree.size())
-				throw(std::exception("Tree sizes do not match!"));
 			return m_key_tree.size();
 		}
 	};
