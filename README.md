@@ -40,6 +40,7 @@ public:
 	{
 		if (m_id_map.has_value(static_cast<uint32_t>(ptr))) return 0;
 		auto id = generate_id();
+		m_id_map.insert(id, static_cast<uint32_t>(ptr));
 	}
 	void remove_by_id(uint32_t uid)
 	{
