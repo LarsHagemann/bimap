@@ -79,7 +79,7 @@ namespace stde
 		}
 	public:
 		/* Constructors */
-		bimap() { }
+		bimap() = default;
 		bimap(std::initializer_list<_Tree_Node> init)
 		{
 			for (const auto& elem : init)
