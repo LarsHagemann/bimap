@@ -1,8 +1,3 @@
-## std-extension
-std-extension is an extension of the standard template library that comes with C++.
-Its main features are:
- * [bimap](#bimap)
- 
 ### bimap
 
 stde::bimap<_KeyType, _ValueType> implements a interface that behaves similar to a map where you can make reverse lookups.
