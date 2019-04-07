@@ -112,4 +112,5 @@ Testing stde::bimap<class std::basic_string<char,struct std::char_traits<char>,c
         Access took        : 60478559 nanoseconds               0 seconds
         find took          : 3892301806 nanoseconds             3 seconds
         erase took         : 3719605167 nanoseconds             3 seconds
+		
 ```
