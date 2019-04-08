@@ -88,7 +88,7 @@ namespace stde
 	public:
 		/* Iterator functions */
 		const_iterator	begin()	const { return const_iterator({ m_key_tree.begin(), m_value_tree.begin() }); }
-		const_iterator	end()	const { return const_iterator({ m_key_tree.end(), m_value_tree.end()   }); }
+		const_iterator	end()	const { return const_iterator({ m_key_tree.end(), m_value_tree.end() }); }
 	public:
 		/* Modification functions */
 		void insert(_Tree_Node&& node)
@@ -157,7 +157,7 @@ namespace stde
 	template<
 		class _KeyType,
 		class _ValueType>
-		using unordered_bimap = bimap<
+	using unordered_bimap = bimap<
 		_KeyType,
 		_ValueType,
 		std::unordered_set<_KeyType>,
