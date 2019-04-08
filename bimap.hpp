@@ -79,7 +79,7 @@ namespace stde
 		}
 	public:
 		/* Constructors */
-		bimap() { }
+		bimap() = default;
 		bimap(std::initializer_list<_Tree_Node> init)
 		{
 			for (const auto& elem : init)
@@ -88,7 +88,7 @@ namespace stde
 	public:
 		/* Iterator functions */
 		const_iterator	begin()	const { return const_iterator({ m_key_tree.begin(), m_value_tree.begin() }); }
-		const_iterator	end()	const { return const_iterator({ m_key_tree.end()  , m_value_tree.end()   }); }
+		const_iterator	end()	const { return const_iterator({ m_key_tree.end(), m_value_tree.end()   }); }
 	public:
 		/* Modification functions */
 		void insert(_Tree_Node&& node)
@@ -150,8 +150,6 @@ namespace stde
 		}
 		size_t size() const
 		{
-			if (m_key_tree.size() != m_value_tree.size())
-				throw(std::exception("Tree sizes do not match!"));
 			return m_key_tree.size();
 		}
 	};
